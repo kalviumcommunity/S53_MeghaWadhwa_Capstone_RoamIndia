@@ -1,23 +1,16 @@
 const mongoose = require('mongoose')
 
 const stateSchema = mongoose.Schema({
-    Name: {type: String,required: [true, "Please add the Name of State"]},
+    State_Name: {type: String,required: [true, "Please add the Name of State"]},
     Popular_Attractions: [{
-        Name: String,
-        Image: String,
-        Attraction_Description: String,
-        Location: String,
-        Attraction_Type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'attractionschemas'
     }],
-    Iso2: {type: String, required: [true, "Please add the ISO2 code of the state"]},
-    Latitude: {type: Number},
-    Longitude: {type: Number},
     Image: {type: String,required: [true, "Please add image link of the State"]},
-    Description: {type: String,required: [true, "Please add the description about the state"]},
-    Iframe_Src: {type: String}
-
+    Description: {type: String,required: [true, "Please add the description about the state"]}
+    
 })
 
-const StateModel  = mongoose.model("stateschema", stateSchema)
+const StateModel  = mongoose.model("stateschemas", stateSchema)
 
-module.exports = StateModel         
+module.exports = StateModel
