@@ -7,7 +7,7 @@ const hotelSchema = mongoose.Schema({
     Image: {type: String,required: [true, "Please add image link of the Hotel"]},
     Description: {type: String,required: [true, "Please add the description about the Hotel"]},
     Location: {type: String,required: [true,"Please add the Location"]},
-    Price: {type: Number,required: [true,"Please add the Price"]},
+    Price: {type: Number,required: [true,"Please add the Price"]}.min(0),
 })
 
 const HotelModel  = mongoose.model("hotelschemas", hotelSchema)

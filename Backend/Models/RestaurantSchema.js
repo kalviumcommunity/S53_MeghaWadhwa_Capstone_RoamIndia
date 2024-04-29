@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const restaurantSchema = mongoose.Schema({
-    Restaurant_Name: {type: String,required: [true, "Please add the Name of Hotel"]},
+    Restaurant_Name: {type: String,required: [true, "Please add the Name of Restaurant"]},
     City: { type: mongoose.Schema.Types.ObjectId, ref: 'cityschemas'},
     State: { type: mongoose.Schema.Types.ObjectId, ref: 'stateschemas'},
     Image: {type: String,required: [true, "Please add image link of the Restaurant"]},
