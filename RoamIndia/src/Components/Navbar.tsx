@@ -3,8 +3,16 @@ import Logo from "./../assets/RoamIndiaLogo.png";
 import "tailwindcss/tailwind.css";
 import "daisyui/dist/full.css";
 import { Link } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar: React.FC = () => {
+  const { loginWithRedirect } = useAuth0();
+  const { logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  if(isAuthenticated){
+    console.log(user);
+    
+  }
 
   return (
     <div>
@@ -73,9 +81,11 @@ const Navbar: React.FC = () => {
             </li>
           </ul>
         </div>
-        <button className="inline-flex text-white h-24 lg:py-5 py-2.5 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 w-[8rem] text-xs  lg:w-[16rem] lg:text-[14px]">
+        {!isLoading && <div className="lg:w-[10rem]">{!isAuthenticated ? <button onClick={() => loginWithRedirect()} className="inline-flex text-white h-24 lg:py-5 py-2.5 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 w-[8rem] text-xs  lg:w-[16rem] lg:text-[14px]">  
           Sign up
-        </button>
+        </button>: <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className="inline-flex text-white h-24 lg:py-5 py-2.5 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 w-[8rem] text-xs  lg:w-[16rem] lg:text-[14px]">
+          Log Out
+        </button>}</div>}
 
       </div>
     </div>
