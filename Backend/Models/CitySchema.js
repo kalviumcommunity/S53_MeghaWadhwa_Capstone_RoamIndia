@@ -5,10 +5,10 @@ const citySchema = mongoose.Schema({
     State: { type: mongoose.Schema.Types.ObjectId, ref: 'stateschemas'},
     Latitude: {type: Number},
     Longitude: {type: Number},
-    Image: {type: String,required: [true, "Please add image link of the city"]},
+    Image: {type: String},
     City_Description: {type: String,required: [true, "Please add the description about the city"]},
     Iframe_Src: {type: String},
-    Attractions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'attractionschemas' }],
+    Popular_Attractions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'attractionschemas' }],
 })
 
 const CityModel  = mongoose.model("cityschemas", citySchema)

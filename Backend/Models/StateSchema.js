@@ -8,10 +8,8 @@ const stateSchema = mongoose.Schema({
     }],
     State_Code: {type: String,required: [true,"Please add state code"]},
     Image: {type: String,required: [true, "Please add image link of the State"]},
-    Description: {type: String,required: [true, "Please add the description about the state"]}
-    
+    Description: {type: String}
 })
-
 const StateModel  = mongoose.model("stateschemas", stateSchema)
 
 module.exports = StateModel
