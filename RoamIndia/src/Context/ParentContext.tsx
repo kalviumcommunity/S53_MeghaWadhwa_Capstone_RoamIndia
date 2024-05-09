@@ -1,4 +1,6 @@
-import React, { createContext, useRef} from 'react'
+import { User, useAuth0 } from '@auth0/auth0-react';
+import axios from 'axios';
+import React, { EffectCallback, createContext, useEffect, useRef} from 'react'
 
 interface AppContextType {
     aboutRef: React.MutableRefObject<HTMLDivElement>;
@@ -10,7 +12,26 @@ interface ParentContextProps {
 }
 
 const ParentContext: React.FC<ParentContextProps> = ({ children }) => {
+    const { user, isAuthenticated, isLoading } = useAuth0();
     const aboutRef = useRef<HTMLDivElement>(document.createElement('div'))
+    useEffect(()=>{
+        const checkUser = async (user : User|undefined) =>{
+            const res = await axios.post("http://localhost:5001/api/users/checkbyemail",user)
+            const isSocial = user?.sub?.split("|")[0] === "auth0" ? false:true
+            return {
+                found: res.data.found,
+                isSocial
+            } 
+        }
+        if(isAuthenticated){
+            checkUser(user).then((res)=>{
+                if(res.found)
+                
+            }).catch()
+        }
+    },[isAuthenticated])
+    
+    
 
     return (
         <AppContext.Provider value={{ aboutRef }}>

@@ -8,5 +8,6 @@ const userSchema = mongoose.Schema({
 })
 
 const UserModel = mongoose.model("userschemas", userSchema)
+const UserSocialModel = mongoose.model("usersocialschemas",userSchema)
 
-module.exports = UserModel
+module.exports = {UserModel,UserSocialModel}

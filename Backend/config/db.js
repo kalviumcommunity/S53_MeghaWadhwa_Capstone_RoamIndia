@@ -2,6 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 let mongoServerURL = process.env.MONGOATLAS_URL;
+console.log('mongoServerURL', mongoServerURL)
 
 const connectDB = async () => {
   try {

@@ -12,8 +12,8 @@ export const InfiniteMovingCards = ({
     className,
 }: {
     items: {
-        image: string;
-        name: string;
+       Image: string;
+       State_Name: string;
     }[];
     direction?: "left" | "right";
     speed?: "fast" | "normal" | "slow";
@@ -88,22 +88,22 @@ export const InfiniteMovingCards = ({
             >
                 {items.map((item) => (
                     <li
-                        className="w-[320px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700"
+                        className="w-[320px] max-w-full relative h-full rounded-2xl border border-b-0 flex-shrink-0 border-slate-700"
                         style={{
                             background:
                                 "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
                         }}
-                        key={item.name}
+                        key={item.State_Name}
                     >
                         <blockquote>
                             <div className="flex justify-center items-center">
                                 <img
-                                    src={item.image}
-                                    className="h-30 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                                    src={item.Image}
+                                    className="w-full cover h-full rounded-xl group-hover/card:shadow-xl"
                                     alt="thumbnail"
                                 />
                                     <span className="absolute z-auto leading-[1.6] text-white text-2xl">
-                                        {item.name}
+                                        {item.State_Name}
                                     </span>
 
                             </div>
