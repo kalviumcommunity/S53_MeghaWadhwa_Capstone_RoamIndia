@@ -4,7 +4,14 @@ import "tailwindcss/tailwind.css";
 import "daisyui/dist/full.css";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+import { AppContext } from "../Context/ParentContext";
+=======
+>>>>>>> Stashed changes
 
+>>>>>>> parent of 15cf83a (Done)
 const Navbar: React.FC = () => {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();

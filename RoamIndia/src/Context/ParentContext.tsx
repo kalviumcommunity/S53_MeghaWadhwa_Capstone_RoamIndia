@@ -1,6 +1,14 @@
 import { User, useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+<<<<<<< Updated upstream
 import React, { EffectCallback, createContext, useEffect, useRef} from 'react'
+=======
+<<<<<<< HEAD
+import React, { createContext, useLayoutEffect, useRef, useState} from 'react'
+=======
+import React, { EffectCallback, createContext, useEffect, useRef} from 'react'
+>>>>>>> parent of 15cf83a (Done)
+>>>>>>> Stashed changes
 
 interface AppContextType {
     aboutRef: React.MutableRefObject<HTMLDivElement>;
