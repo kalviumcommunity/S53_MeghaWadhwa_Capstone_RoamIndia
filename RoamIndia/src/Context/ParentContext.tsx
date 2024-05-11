@@ -1,6 +1,6 @@
 import { User, useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import React, {  createContext, useLayoutEffect, useRef, useState} from 'react'
+import React, { createContext, useLayoutEffect, useRef, useState} from 'react'
 
 interface AppContextType {
     aboutRef: React.MutableRefObject<HTMLDivElement>;
