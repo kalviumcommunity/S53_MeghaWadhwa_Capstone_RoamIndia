@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import CarouselImage1 from "./../assets/Banner1.png";
 import CarouselImage2 from "../assets/Banner2.png";
 import CarouselImage3 from "../assets/Banner3.png";
@@ -9,9 +9,25 @@ import AboutUs from "./AboutUs";
 import TopAttractions from "./TopAttractions";
 import TrendingDestinations from "./TrendingDestinations";
 import Footer from "./Footer";
+import Modal from "./Modal";
+import { AppContext } from "../Context/ParentContext";
 
 const Home: React.FC = () => {
   const DiscoverRef = useRef<HTMLDivElement>(null)
+  const appContext = useContext(AppContext);
+  const [showModal, setShowModal] = useState<boolean>(false)
+  const {askUser} =  appContext || {askUser: ""}
+
+  const onClose = () => {
+    setShowModal(false);
+  }
+
+  useEffect(() => {
+    if(askUser.length > 0) {
+      setShowModal(true)
+    }
+  },[askUser])
+  
 
 
   const handleClick = () => {
@@ -19,6 +35,8 @@ const Home: React.FC = () => {
       (DiscoverRef.current as HTMLDivElement).scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  
 
   const words = [
     {
@@ -35,6 +53,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Modal onClose={onClose} isOpen={showModal} askUser={askUser}/>
       <div className="flex justify-center">
         <div className="absolute flex flex-col gap-4 lg:gap-6 lg:right-20 justify-center items-center lg:w-7/12 w-9/12 h-[14rem] lg:h-[28rem] z-10">
           {/* <img
